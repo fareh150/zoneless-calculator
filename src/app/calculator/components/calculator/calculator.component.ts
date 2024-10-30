@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, viewChildren } from '@angular/core';
 import { CalculatorButtonComponent } from '../calculator-button/calculator-button.component';
 
 @Component({
@@ -20,6 +20,9 @@ import { CalculatorButtonComponent } from '../calculator-button/calculator-butto
 })
 export class CalculatorComponent
 {
+  //                        👇pilla muchos datos, () les decimos de que componente queremos que lo pille , en este caso todos los calculator buttons  que ponemos para crear la calculadora
+  public calculatorButtons = viewChildren( CalculatorButtonComponent );
+
   handleClick(key: string): void
   {
     console.log({key});
@@ -28,6 +31,24 @@ export class CalculatorComponent
   //@HostListener('document:keyup', ['$event'])
   handleKeyboardEvent( event: KeyboardEvent )
   {
-    this.handleClick( event.key );
+    const key = event.key;
+
+    const keyEquivalents: Record<string, string> = {
+      '*': 'x',
+      '/': '÷',
+      Enter: '=',
+      Escape: 'C',
+      Clear: 'C',
+    };
+
+    //verifica si se produce uno de estos valores
+    const keyValue = keyEquivalents[key] ?? key;
+
+    this.handleClick( keyValue );
+
+    this.calculatorButtons().forEach( (button) =>
+      {
+        button.keyboardPressedStyle(keyValue);
+      })
   }
 }
