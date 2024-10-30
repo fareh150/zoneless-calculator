@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, viewChildren } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, viewChildren } from '@angular/core';
 import { CalculatorButtonComponent } from '../calculator-button/calculator-button.component';
+import { CalculatorService } from '@/calculator/services/calculator.service';
 
 @Component({
   selector: 'calculator',
@@ -20,8 +21,19 @@ import { CalculatorButtonComponent } from '../calculator-button/calculator-butto
 })
 export class CalculatorComponent
 {
-  //                        👇pilla muchos datos, () les decimos de que componente queremos que lo pille , en este caso todos los calculator buttons  que ponemos para crear la calculadora
+  private calculatorService = inject(CalculatorService);
+
   public calculatorButtons = viewChildren( CalculatorButtonComponent );
+
+  //get resultText()
+  //{
+  //  return this.calculatorService.resultText;
+  //}
+  public resultText = computed(() => this.calculatorService.resultText());
+  public subResultText = computed(() => this.calculatorService.subResultText());
+  public lastOperator = computed(() => this.calculatorService.lastOperator());
+
+
 
   handleClick(key: string): void
   {
