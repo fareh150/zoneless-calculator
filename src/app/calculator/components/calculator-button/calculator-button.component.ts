@@ -18,6 +18,8 @@ import {
   styleUrl: './calculator-button.component.scss',
   host: {
     class: 'border-r border-b border-indigo-400',
+    '[class.w-1/4]' : '!isDoubleSize()',
+    '[class.w-2/4]' : 'isDoubleSize()',
     //attribute: 'hola',  se puede poner mas variables al contenedor del componente
     //'data-size': 'XL',
   }
@@ -40,15 +42,11 @@ export class CalculatorButtonComponent {
         typeof value === 'string' ? value === '' : value,
     })
 
-  @HostBinding('class.w-2/4') get doubleSize()
-  {
-   return this.isDoubleSize();
-  }
-
-  @HostBinding('class.w-1/4') get singleSize()
-  {
-  return !this.isDoubleSize();
-  }
+    //se quita el host binding y se pone en el host con un condicional
+  //@HostBinding('class.w-2/4') get doubleSize()
+  //{
+  // return this.isDoubleSize();
+  //}
 
   handleClick()
   {
