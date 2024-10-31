@@ -65,16 +65,34 @@ export class CalculatorService
       return;
     }
 
-    // Validar decimal
+    // limitar caracteres
+    if ( this. resultText().length >= 8 )
+    {
+      console.log('Max length reached');
+      return;
+    }
+
+    // Decimal
     if ( value === '.' && !this.resultText().includes('.') )
     {
       if ( this.resultText() === '0' || this.resultText() === '' )
-      {
-        this.resultText.update( (text) => text + '0.' );
-        return;
-      }
-      this.resultText.update( (text) => text + '.' );
+        {
+          this.resultText.set('0.');
+          return;
+        }
+      console.log('Decimal already exists');
       return;
     }
+    if ( value === '.' && this.resultText().includes('.') )
+    {
+      return;
+    }
+
+    // manage initial 0
+    if ( value === '0' && this.resultText() === '0'|| this.resultText() === '-0' )
+      return;
+
+    // numbers
+    this.resultText.update( text => text + value)
   }
 }
