@@ -38,7 +38,7 @@ describe('AppComponent', () => {
      expect(app.title).toEqual('zoneless-calculator');
    });
 
-    it('should render title', () => {
-      //expect(compiled.querySelector('h1')?.textContent).toContain('Hello, zoneless-calculator');
+    it('should render router-outlet', () => {
+      expect(compiled.querySelector('router-outlet')).not.toBeNull();
     });
 });
