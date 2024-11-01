@@ -64,7 +64,6 @@ export class CalculatorService
       this.resultText.set('0');
       return;
     }
-
     // limitar caracteres
     if ( this. resultText().length >= 8 )
     {
@@ -88,18 +87,16 @@ export class CalculatorService
     }
 
     // manage initial 0
-    if ( value === '0' && this.resultText() === '0'|| this.resultText() === '-0' )
+    if ( value === '0' && this.resultText() === '0'|| value === '0' && this.resultText() === '-0' )
     {
       return;
     }
 
-    console.log(value === '+/-')
     // cambiar signo
     if ( value === '+/-' )
     {
       if ( this.resultText().includes('-') )
       {
-        console.log('Remove sign');
         this.resultText.update( (text) => text.slice(1) );
         return;
       }
