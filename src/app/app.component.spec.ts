@@ -14,6 +14,19 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
+  it('should be 3', () =>
+  {
+    // Arrange
+    const num1 = 1;
+    const num2 = 2;
+
+    // Act
+    const result = num1 + num2;
+
+    // Assert
+    expect(result).toBe(3);
+  })
+
   // it(`should have the 'zoneless-calculator' title`, () => {
   //   const fixture = TestBed.createComponent(AppComponent);
   //   const app = fixture.componentInstance;
