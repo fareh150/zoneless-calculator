@@ -109,7 +109,7 @@ export class CalculatorService
     {
       if(this.resultText() === '0' || this.resultText() === '-0')
       {
-        if (this.resultText() === '-0')
+        if (this.resultText().includes('-'))
         {
           this.resultText.set('-' + value);
           return;
