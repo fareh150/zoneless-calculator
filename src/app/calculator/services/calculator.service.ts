@@ -79,6 +79,7 @@ export class CalculatorService
         this.resultText.set('0.');
         return;
       }
+      this.resultText.update((prev) => prev + '.');
       return;
     }
     if ((value === '.' || value === ',')  && this.resultText().includes('.'))
