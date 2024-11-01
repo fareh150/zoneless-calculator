@@ -72,7 +72,7 @@ export class CalculatorService
     }
 
     // Decimal
-    if (value === '.' || value === ',' && !this.resultText().includes('.'))
+    if ((value === '.' || value === ',') && !this.resultText().includes('.'))
     {
       if (this.resultText() === '0' || this.resultText() === '')
         {
@@ -81,7 +81,7 @@ export class CalculatorService
         }
       return;
     }
-    if (value === '.' || value === ','  && this.resultText().includes('.'))
+    if ((value === '.' || value === ',')  && this.resultText().includes('.'))
     {
       return;
     }
