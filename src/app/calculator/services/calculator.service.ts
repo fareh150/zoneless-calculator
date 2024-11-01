@@ -27,7 +27,7 @@ export class CalculatorService
 
     if (value === '=')
     {
-      console.log('Calculate result');
+      this.calculateResult();
       return;
     }
 
@@ -59,6 +59,8 @@ export class CalculatorService
     // Aplicar operadores
     if (operators.includes(value))
     {
+      this.calculateResult();
+
       this.lastOperator.set(value);
       this.subResultText.set(this.resultText());
       this.resultText.set('0');
@@ -122,5 +124,32 @@ export class CalculatorService
       this.resultText.update( (prev) => prev + value );
       return;
     }
+  }
+
+  public calculateResult(): void
+  {
+    const number1 = parseFloat(this.subResultText());
+    const number2 = parseFloat(this.resultText());
+
+    let result = 0;
+
+    switch (this.lastOperator())
+    {
+      case '+':
+        result = number1 + number2;
+        break;
+      case '-':
+        result = number1 - number2;
+        break;
+      case 'x':
+        result = number1 * number2;
+        break;
+      case '÷':
+        result = number1 / number2;
+        break;
+    }
+    this.resultText.set(result.toString());
+    this.subResultText.set('0');
+
   }
 }
