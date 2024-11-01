@@ -62,5 +62,14 @@ describe('AppComponent', () => {
       )
     })
 
+    it('should contain the Buy me a beer link', () =>
+    {
+      const anchorElement = compiled.querySelector('a');
+
+      expect(anchorElement).not.toBeNull();
+      expect(anchorElement?.title).toBe('Buy me a beer');
+      expect(anchorElement?.getAttribute('href')).toBe('https://www.buymeacoffee.com/scottwindon')
+      expect(anchorElement?.href).toBe('https://www.buymeacoffee.com/scottwindon')
+    });
 
 });
