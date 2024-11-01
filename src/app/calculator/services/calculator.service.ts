@@ -105,7 +105,21 @@ export class CalculatorService
     }
 
     // numbers
-    this.resultText.update( text => text + value)
+    if ( numbers.includes(value) )
+    {
+      if( this.resultText() === '0' || this.resultText() === '-0' )
+      {
+        if (this.resultText() === '-0')
+        {
+          this.resultText.set('-' + value);
+          return;
+        }
+        this.resultText.set(value);
+        return;
+      }
+    }
+
+    this.resultText.update( (prev) => prev + value );
     return;
   }
 }
