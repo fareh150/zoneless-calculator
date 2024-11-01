@@ -4,7 +4,7 @@ const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 const operators = ['+', '-', 'x', '÷', '*', '/']; // aqui poner * o /
 
-const specialOperators = ['C', '+/-', '=', '%', '.', 'Backspace'];
+const specialOperators = ['C', '+/-', '=', '%', '.', ',', 'Backspace'];
 
 
 @Injectable({
@@ -73,17 +73,16 @@ export class CalculatorService
     }
 
     // Decimal
-    if ( value === '.' && !this.resultText().includes('.') )
+    if ( value === '.' || value === ',' && !this.resultText().includes('.') )
     {
       if ( this.resultText() === '0' || this.resultText() === '' )
         {
           this.resultText.set('0.');
           return;
         }
-      console.log('Decimal already exists');
       return;
     }
-    if ( value === '.' && this.resultText().includes('.') )
+    if ( value === '.' || value === ','  && this.resultText().includes('.') )
     {
       return;
     }
