@@ -87,7 +87,7 @@ export class CalculatorService
     }
 
     // manage initial 0
-    if ( value === '0' && this.resultText() === '0'|| value === '0' && this.resultText() === '-0' )
+    if ( value === '0' && (this.resultText() === '0'|| this.resultText() === '-0') )
     {
       return;
     }
