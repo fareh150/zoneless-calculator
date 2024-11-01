@@ -45,6 +45,13 @@ export class CalculatorService
     if (value === 'Backspace')
     {
       if (this.resultText() === '0') return;
+
+      if (this.resultText().length === 2 && this.resultText().includes('-'))
+      {
+        this.resultText.set('0');
+        return;
+      }
+
       if (this.resultText().length === 1)
       {
         this.resultText.set('0');
@@ -52,7 +59,6 @@ export class CalculatorService
       }
 
       this.resultText.update((prev) => prev.slice(0, -1));
-      console.log('Backspace');
       return;
     }
 
