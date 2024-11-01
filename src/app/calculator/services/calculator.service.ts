@@ -90,9 +90,26 @@ export class CalculatorService
 
     // manage initial 0
     if ( value === '0' && this.resultText() === '0'|| this.resultText() === '-0' )
+    {
       return;
+    }
+
+    console.log(value === '+/-')
+    // cambiar signo
+    if ( value === '+/-' )
+    {
+      if ( this.resultText().includes('-') )
+      {
+        console.log('Remove sign');
+        this.resultText.update( (text) => text.slice(1) );
+        return;
+      }
+      this.resultText.update( text => '-' + text );
+      return;
+    }
 
     // numbers
     this.resultText.update( text => text + value)
+    return;
   }
 }
