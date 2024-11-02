@@ -15,7 +15,7 @@ import {
   imports: [],
   templateUrl: './calculator-button.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrl: './calculator-button.component.scss',
+  styleUrl: './calculator-button.component.css',
   host: {
     class: 'border-r border-b border-indigo-400',
     '[class.w-1/4]' : '!isDoubleSize()',
