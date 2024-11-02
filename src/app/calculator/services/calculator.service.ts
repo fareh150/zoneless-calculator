@@ -73,7 +73,7 @@ export class CalculatorService
       return;
     }
     // limitar caracteres
-    if (this. resultText().length >= 8)
+    if (this. resultText().length >= 10)
     {
       console.log('Max length reached');
       return;
