@@ -1,5 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CalculatorButtonComponent } from './calculator-button.component';
+import { Component } from '@angular/core';
+
+@Component({
+  standalone: true,
+  imports: [CalculatorButtonComponent],
+  template: `
+    <calculator-button>
+      <span class="projected-content underline">Test content</span>
+    </calculator-button>
+  `,
+})
+class TestHostComponent {}
 
 describe('CalculatorButtonComponent', () => {
 
