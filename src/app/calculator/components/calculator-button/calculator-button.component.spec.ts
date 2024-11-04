@@ -59,6 +59,7 @@ describe('CalculatorButtonComponent', () => {
     //asincronos
     setTimeout(() => {
       expect(component.isPressed()).toBeFalse();
+      // se pone done para conseguir datos asyncronos
       done();
     }
     , 101);
