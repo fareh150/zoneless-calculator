@@ -49,4 +49,18 @@ describe('CalculatorButtonComponent', () => {
     expect(component.onClick.emit).toHaveBeenCalled();
     // expect(component.onClick.emit).toHaveBeenCalledWith('1');
   });
+
+  it('should set isPressed to true and then false when keyboardPressStyle is called with a matching key', (done) =>
+  {
+    // se pone ! por que se que siempre va a existir
+    component.contentValue()!.nativeElement.innerText = '1';
+    component.keyboardPressedStyle('1');
+    expect(component.isPressed()).toBeTrue();
+    //asincronos
+    setTimeout(() => {
+      expect(component.isPressed()).toBeFalse();
+      done();
+    }
+    , 101);
+  });
 });
