@@ -32,7 +32,6 @@ describe('CalculatorButtonComponent', () => {
   });
 
   it('should create the app', () => {
-    console.log(compiled)
     expect(component).toBeTruthy();
   });
 
@@ -83,4 +82,16 @@ describe('CalculatorButtonComponent', () => {
       component.keyboardPressedStyle('2');
       expect(component.isPressed()).toBeFalse();
     });
+
+  it('should display the projected content', () =>
+  {
+    const testHostFixture = TestBed.createComponent(TestHostComponent);
+
+    const compiled = testHostFixture.nativeElement as HTMLDivElement;
+    const projectedContent = compiled.querySelector('.projected-content');
+
+    expect(projectedContent).toBeTruthy();
+    expect(projectedContent?.classList).toContain('underline');
+
+  });
 });
