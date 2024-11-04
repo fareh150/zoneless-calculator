@@ -40,4 +40,13 @@ describe('CalculatorButtonComponent', () => {
     expect(compiled.classList).toContain(('w-2/4'));
     expect(component.isDoubleSize()).toBeTrue();
   });
+
+  it('should emit onClick event when button is clicked', () =>
+  {
+    // espías
+    spyOn(component.onClick, 'emit');
+    component.handleClick();
+    expect(component.onClick.emit).toHaveBeenCalled();
+    // expect(component.onClick.emit).toHaveBeenCalledWith('1');
+  });
 });
