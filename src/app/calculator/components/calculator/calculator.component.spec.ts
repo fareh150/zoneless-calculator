@@ -40,4 +40,11 @@ describe('CalculatorComponent', () => {
 
     expect(component).toBeTruthy();
   });
+
+  it('should have the current getters', () =>
+  {
+    expect(component.resultText()).toBe('100.00');
+    expect(component.subResultText()).toBe('0');
+    expect(component.lastOperator()).toBe('+');
+  });
 });
