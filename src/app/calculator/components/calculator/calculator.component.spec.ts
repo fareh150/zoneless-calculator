@@ -90,6 +90,24 @@ describe('CalculatorComponent', () => {
         expect(buttons[1].textContent?.trim()).toBe('+/-');
         expect(buttons[2].textContent?.trim()).toBe('%');
         expect(buttons[3].textContent?.trim()).toBe('÷');
-
       })
+
+    it('should handle keyboard events correctly', () =>
+    {
+      const eventEnter = new KeyboardEvent('keyup', { key: 'Enter' });
+      document.dispatchEvent(eventEnter);
+      expect( mockCalculatorService.constructNumber ).toHaveBeenCalledWith('=');
+
+      const eventEscape = new KeyboardEvent('keyup', { key: 'Escape' });
+      document.dispatchEvent(eventEscape);
+      expect( mockCalculatorService.constructNumber ).toHaveBeenCalledWith('C');
+
+      const eventClear = new KeyboardEvent('keyup', { key: 'Clear' });
+      document.dispatchEvent(eventClear);
+      expect( mockCalculatorService.constructNumber ).toHaveBeenCalledWith('C');
+
+      const eventMultiplier = new KeyboardEvent('keyup', { key: '*' });
+      document.dispatchEvent(eventMultiplier);
+      expect( mockCalculatorService.constructNumber ).toHaveBeenCalledWith('x');
+    });
 });
