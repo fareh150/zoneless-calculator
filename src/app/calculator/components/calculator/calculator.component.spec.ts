@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CalculatorComponent } from './calculator.component';
 import { CalculatorService } from '@/calculator/services/calculator.service';
+import { By } from '@angular/platform-browser';
+import { CalculatorButtonComponent } from '../calculator-button/calculator-button.component';
 
 class MockCalculatorService
 {
@@ -70,4 +72,24 @@ describe('CalculatorComponent', () => {
       expect(component.subResultText()).toBe('456');
       expect(component.lastOperator()).toBe('*');
     });
+
+    it('should have 19 calculator-buttons components', () =>
+    {
+      expect(component.calculatorButtons()).toBeTruthy();
+      expect(component.calculatorButtons().length).toBe(19);
+    })
+
+    it('should have 19 calculator-buttons with content projection', () =>
+      {
+        // const buttonsByDirective = fixture.debugElement.queryAll(By.directive(CalculatorButtonComponent));
+        const buttons = compiled.querySelectorAll('calculator-button');
+
+        expect(buttons.length).toBe(19);
+
+        expect(buttons[0].textContent?.trim()).toBe('C');
+        expect(buttons[1].textContent?.trim()).toBe('+/-');
+        expect(buttons[2].textContent?.trim()).toBe('%');
+        expect(buttons[3].textContent?.trim()).toBe('÷');
+
+      })
 });
