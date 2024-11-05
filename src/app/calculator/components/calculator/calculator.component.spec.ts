@@ -110,4 +110,15 @@ describe('CalculatorComponent', () => {
       document.dispatchEvent(eventMultiplier);
       expect( mockCalculatorService.constructNumber ).toHaveBeenCalledWith('x');
     });
+
+    it('should display result text correctly', () =>
+    {
+        mockCalculatorService.resultText.and.returnValue('123');
+        mockCalculatorService.subResultText.and.returnValue('10');
+        mockCalculatorService.lastOperator.and.returnValue('-');
+        fixture.detectChanges();
+        expect(component.resultText()).toBe('123');
+
+        expect(compiled.querySelector('#sub-result')?.textContent).toContain('10 -');
+    });
 });
